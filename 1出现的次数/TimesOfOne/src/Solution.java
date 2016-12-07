@@ -6,13 +6,12 @@ public class Solution {
         if (n <= 0)
             return 0;
         int count = 0;
-        StringBuilder str = new StringBuilder();
-        for (int i = 0; i <= n; i++) {
-            str.append(i);
-        }
-        for(int i = 0; i < str.length(); i++) {
-            if (str. == '1')
-                count++;
+        for (int i = 1; i <= n; i++) {
+            char[] chs =String.valueOf(i).toCharArray();
+            for (char ch : chs) {
+                if (ch == '1')
+                    count++;
+            }
         }
         return count;
     }
