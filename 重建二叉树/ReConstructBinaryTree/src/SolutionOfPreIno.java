@@ -10,31 +10,43 @@ class TreeNode {
  }
 
 public class SolutionOfPreIno {
-    public static TreeNode reConstructBinaryTree(int [] pre,int [] ino) {
-
-        if (pre.length == 0)
+//    public static TreeNode reConstructBinaryTree(int [] pre,int [] ino) {
+//
+//        if (pre.length == 0)
+//            return null;
+//        TreeNode root = new TreeNode(pre[0]);
+//        if (pre.length == 1)
+//            return root;
+//        int index = 0;
+//        while (ino[index++] != pre[0]);
+//        index--;//寻找左右子树分界线,index为根节点位置
+//
+//        int len = pre.length;
+//        int[] lpre = new int[index];//左子树前序
+//        int[] lino = new int[index];//左子树中序
+//        int[] rpre = new int[len - index - 1];//右子树前序
+//        int[] rino = new int[len - index - 1];//右子树中序
+//
+//        System.arraycopy(pre, 1, lpre, 0, index);
+//        System.arraycopy(ino, 0, lino, 0, index);
+//        System.arraycopy(pre, index+1, rpre, 0, len-index-1);
+//        System.arraycopy(ino, index+1, rino, 0, len-index-1);
+//
+//        root.left = reConstructBinaryTree(lpre, lino);
+//        root.right = reConstructBinaryTree(rpre, rino);
+//        return root;
+//    }
+    public static TreeNode reConstructBinaryTree(int[] pre, int[] ino, int prebegin, int preend, int inobegin, int inoend) {
+        if (prebegin == preend)
             return null;
-        TreeNode root = new TreeNode(pre[0]);
-        if (pre.length == 1)
+        TreeNode root = new TreeNode(pre[prebegin]);
+        if (preend - prebegin == 1)
             return root;
-        int index = 0;
-        while (ino[index++] != pre[0]);
-        index--;//寻找左右子树分界线,index为根节点位置
-
-        int len = pre.length;
-        int[] lpre = new int[index];//左子树前序
-        int[] lino = new int[index];//左子树中序
-        int[] rpre = new int[len - index - 1];//右子树前序
-        int[] rino = new int[len - index - 1];//右子树中序
-
-        System.arraycopy(pre, 1, lpre, 0, index);
-        System.arraycopy(ino, 0, lino, 0, index);
-        System.arraycopy(pre, index+1, rpre, 0, len-index-1);
-        System.arraycopy(ino, index+1, rino, 0, len-index-1);
-
-        root.left = reConstructBinaryTree(lpre, lino);
-        root.right = reConstructBinaryTree(rpre, rino);
-        return root;
+        int index = prebegin;
+        while (ino[index++] == pre[prebegin]);
+        index--;
+        root.left = reConstructBinaryTree(pre, ino, );
+        root.right = reConstructBinaryTree(pre, ino, )
     }
     public static void printTree(TreeNode root) {
         if (root != null) {
