@@ -34,21 +34,26 @@ public class SolutionOfPreIno {
 //        root.left = reConstructBinaryTree(lpre, lino);
 //        root.right = reConstructBinaryTree(rpre, rino);
 //        return root;
-       return helpReConstructBinaryTree(pre, ino, 0, pre.length-1, 0, ino.length-1);
+        return helper(pre, 0, pre.length-1, ino, 0, ino.length-1);
     }
-    public static TreeNode helpReConstructBinaryTree(int[] pre, int[] ino, int prebegin, int preend, int inobegin, int inoend) {
-        if (prebegin > preend || inobegin >inoend)
+    public static TreeNode helper(int[] pre, int prebegin, int preend,
+                                  int[] ino, int inobegin, int inoend) {
+        // 利用数组下标减少内存占用，确定每次需要迭代的前序 中序 序列即可
+        if (prebegin > preend || inobegin > inoend)//如果出现没有子树
             return null;
         TreeNode root = new TreeNode(pre[prebegin]);
-        if (preend - prebegin == 1)
+        if (prebegin == preend)
             return root;
-        int index = prebegin;
-        while (ino[index++] == pre[prebegin]);
-        index--;
-        root.left = helpReConstructBinaryTree(pre, ino, prebegin+1, index, inobegin, index-1);
-        root.right = helpReConstructBinaryTree(pre, ino, index+1, preend, index+1,inoend);
+        int index = inobegin;
+        while (pre[prebegin] != ino[index]) index++;
+        int llen = index - inobegin;
+        root.left = helper(pre, prebegin + 1, prebegin + llen, ino, inobegin, index-1);
+        root.right = helper(pre, prebegin + llen + 1, preend, ino, index + 1, inoend);
         return root;
     }
+
+
+
     public static void printTree(TreeNode root) {
         if (root != null) {
             System.out.print(root.val + " ");
@@ -60,5 +65,8 @@ public class SolutionOfPreIno {
         int[] pre = {1,2,4,3,5,6};
         int[] ino = {4,2,1,5,3,6};
         printTree(reConstructBinaryTree(pre, ino));
+//        int i = 0;
+//        while( pre[i++] != 5);
+//        System.out.print(i);
     }
 }
