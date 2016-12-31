@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AddStrings.iml" filepath="$PROJECT_DIR$/AddStrings.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DeleteDuplicates.iml" filepath="$PROJECT_DIR$/DeleteDuplicates.iml" />
     </modules>
   </component>
 </project>
