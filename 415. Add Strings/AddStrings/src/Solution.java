@@ -1,18 +1,19 @@
 /**
- * Created by xg on 2016/12/29.
+ * Created by Administator on 2016/12/30.
  */
 public class Solution {
-    public String addStrings(String num1, String num2) {
+    public static String addStrings(String num1, String num2) {
         StringBuilder stb = new StringBuilder();
         int carry = 0;
-        int i = 0;
-        for(; ) {
-            int n = num1.charAt(i) + num2.charAt(i) - 2 * '0' + carry;
-            carry = n / 10;
-            stb = n + stb;
+        for(int i = num1.length() -1, j= num2.length() - 1; i >= 0 || j >= 0 || carry == 1; i--, j--) {
+            int x = i < 0 ? 0 : num1.charAt(i) - '0';
+            int y = j < 0 ? 0 : num2.charAt(j) - '0';
+            stb.append((x + y + carry) % 10);
+            carry = (x + y + carry) / 10;
         }
-        if(i > num1.length())
-            return i > num1.length() ? num2.substring(i) + stb.toString() :
-                    num1.substring(i) + stb.toString();
+        return stb.reverse().toString();
+    }
+    public static void main(String[] args) {
+        System.out.print(addStrings("123", "923"));
     }
 }
