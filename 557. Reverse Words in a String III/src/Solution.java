@@ -5,15 +5,15 @@ public class Solution {
             int j = i;
             while (j < s.length() && s.charAt(j) != ' ')
                 j++;
-            boolean flag = false;
-            if (j < s.length()) flag = true;
             for(; j - 1 >= i; j--) {
                 stb.append(s.charAt(j-1));
             }
-            if (flag) stb.append(' ');
+            stb.append(' ');
             i = stb.length();
         }
-        return stb.toString();
+
+
+        return stb.toString().trim();
     }
 
     public String method2(String s) {
@@ -26,7 +26,7 @@ public class Solution {
 
     public static void main(String[] args) {
         String string = "Let's make";
-        System.out.println(" he ".trim());
-//     System.out.println(reverseWords(string));
+//        System.out.println(" he ".trim());
+        System.out.println(reverseWords(string));
     }
 }
