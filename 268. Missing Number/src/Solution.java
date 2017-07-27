@@ -7,4 +7,11 @@ public class Solution {
     }
     return res;
   }
+  int method(int[] nums) {
+    int res = 0;
+    for (int i : nums) {
+      res += i;
+    }
+    return (0 + nums.length) * (nums.length + 1) / 2 - res;
+  }
 }
